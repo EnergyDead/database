@@ -1,160 +1,160 @@
 use [recipe12.1]
 
-— 3.1 INSERT
+â€” 3.1 INSERT
 
 /*
-a.Áåç óêàçàíèÿ ñïèñêà ïîëåé
+a.Ð‘ÐµÐ· ÑƒÐºÐ°Ð·Ð°Ð½Ð¸Ñ ÑÐ¿Ð¸ÑÐºÐ° Ð¿Ð¾Ð»ÐµÐ¹
 INSERT INTO table_name VALUES (value1, value2, value3, ...);
 */
-INSERT INTO foodstuff_type VALUES ( N'íàïèòêè', N'óòîëÿåò æàæäó' )
+INSERT INTO foodstuff_type VALUES ( N'Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ¸', N'ÑƒÑ‚Ð¾Ð»ÑÐµÑ‚ Ð¶Ð°Ð¶Ð´Ñƒ' )
 
 /*
-b.Ñ óêàçàíèåì ñïèñêà ïîëåé
+b.Ð¡ ÑƒÐºÐ°Ð·Ð°Ð½Ð¸ÐµÐ¼ ÑÐ¿Ð¸ÑÐºÐ° Ð¿Ð¾Ð»ÐµÐ¹
 INSERT INTO table_name (column1, column2, column3, ...)
 VALUES (value1, value2, value3, ...);
 */
 INSERT INTO foodstuff_type ([name], [description])
-VALUES ( N'ìÿñî', N'óáèâàòü æèâîòíûõ' )
+VALUES ( N'Ð¼ÑÑÐ¾', N'ÑƒÐ±Ð¸Ð²Ð°Ñ‚ÑŒ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ñ‹Ñ…' )
 
 /*
-c. Ñ ÷òåíèåì çíà÷åíèÿ èç äðóãîé òàáëèöû
+c. Ð¡ Ñ‡Ñ‚ÐµÐ½Ð¸ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð¸Ð· Ð´Ñ€ÑƒÐ³Ð¾Ð¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹
 INSERT INTO table2 (column_name(s)) SELECT column_name(s) FROM table1;
 */
 INSERT INTO recipe ([name]) SELECT [name] FROM dish;
 
-— 3.2 DELETE
+â€” 3.2 DELETE
 
 /*
-a.Âñåõ çàïèñåé
+a.Ð’ÑÐµÑ… Ð·Ð°Ð¿Ð¸ÑÐµÐ¹
 */
-— DELETE step
+â€” DELETE step
 
 /*
-b. Ïî óñëîâèþ
+b. ÐŸÐ¾ ÑƒÑÐ»Ð¾Ð²Ð¸ÑŽ
 DELETE FROM table_name WHERE condition;
 */
 --DELETE FROM step WHERE recipe_id = 1
 
-— 3.3. UPDATE
+â€” 3.3. UPDATE
 
 /*
-a.Âñåõ çàïèñåé
+a.Ð’ÑÐµÑ… Ð·Ð°Ð¿Ð¸ÑÐµÐ¹
 */
 --UPDATE dish SET price = 0
 
 /*
-b.Ïî óñëîâèþ îáíîâëÿÿ îäèí àòðèáóò
+b.ÐŸÐ¾ ÑƒÑÐ»Ð¾Ð²Ð¸ÑŽ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑ Ð¾Ð´Ð¸Ð½ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚
 UPDATE table_name
 SET column1 = value1, column2 = value2, ... WHERE
 condition
 */
---UPDATE dish SET price = 0 WHERE name = 'ñóï'
+--UPDATE dish SET price = 0 WHERE name = 'ÑÑƒÐ¿'
 
 /*
-c.Ïî óñëîâèþ îáíîâëÿÿ íåñêîëüêî àòðèáóòîâ
+c.ÐŸÐ¾ ÑƒÑÐ»Ð¾Ð²Ð¸ÑŽ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð²
 UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE
 condition
 */
---UPDATE recipe SET [description] = 0 WHERE [name] NOT LIKE 'ñóï' AND type_recipe = 100
+--UPDATE recipe SET [description] = 0 WHERE [name] NOT LIKE 'ÑÑƒÐ¿' AND type_recipe = 100
 
-— 3.4.SELECT
+â€” 3.4.SELECT
 
 /*
-a.Ñ íàáîðîì èçâëåêàåìûõ àòðèáóòîâ (SELECT atr1, atr2 FROM ...)
+a.Ð¡ Ð½Ð°Ð±Ð¾Ñ€Ð¾Ð¼ Ð¸Ð·Ð²Ð»ÐµÐºÐ°ÐµÐ¼Ñ‹Ñ… Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² (SELECT atr1, atr2 FROM ...)
 */
 SELECT [name], [price] FROM dish
 
 /*
-b. Ñî âñåìè àòðèáóòàìè ( SELECT * FROM ...)
+b. Ð¡Ð¾ Ð²ÑÐµÐ¼Ð¸ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð°Ð¼Ð¸ ( SELECT * FROM ...)
 */
 SELECT * FROM dish
 
 /*
-c. Ñ óñëîâèåì ïî àòðèáóòó (SELECT * FROM ... WHERE atr1 = value
+c. Ð¡ ÑƒÑÐ»Ð¾Ð²Ð¸ÐµÐ¼ Ð¿Ð¾ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñƒ (SELECT * FROM ... WHERE atr1 = value
 */
 SELECT * FROM dish WHERE price = 500
 
-— 3.5. SELECT ORDER BY + TOP (LIMIT)
+â€” 3.5. SELECT ORDER BY + TOP (LIMIT)
 
 /*
-a. Ñ ñîðòèðîâêîé ïî âîçðàñòàíèþ ASC + îãðàíè÷åíèå âûâîäà êîëè÷åñòâà çàïèñåé
+a. Ð¡ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¾Ð¹ Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ ASC + Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ðµ Ð²Ñ‹Ð²Ð¾Ð´Ð° ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð·Ð°Ð¿Ð¸ÑÐµÐ¹
 */
 SELECT TOP(2) * FROM dish
 ORDER BY price
 
 /*
-b.Ñ ñîðòèðîâêîé ïî óáûâàíèþ DESC
+b.Ð¡ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¾Ð¹ Ð¿Ð¾ ÑƒÐ±Ñ‹Ð²Ð°Ð½Ð¸ÑŽ DESC
 */
 SELECT * FROM dish
 ORDER BY price DESC
 
 /*
-c.Ñ ñîðòèðîâêîé ïî äâóì àòðèáóòàì + îãðàíè÷åíèå âûâîäà êîëè÷åñòâà çàïèñåé
+c.Ð¡ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¾Ð¹ Ð¿Ð¾ Ð´Ð²ÑƒÐ¼ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð°Ð¼ + Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ðµ Ð²Ñ‹Ð²Ð¾Ð´Ð° ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ð·Ð°Ð¿Ð¸ÑÐµÐ¹
 */
 SELECT TOP(2) * FROM dish
 ORDER BY price, [name]
 
 /*
-d.Ñ ñîðòèðîâêîé ïî ïåðâîìó àòðèáóòó, èç ñïèñêà èçâëåêàåìûõ
+d.Ð¡ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¾Ð¹ Ð¿Ð¾ Ð¿ÐµÑ€Ð²Ð¾Ð¼Ñƒ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñƒ, Ð¸Ð· ÑÐ¿Ð¸ÑÐºÐ° Ð¸Ð·Ð²Ð»ÐµÐºÐ°ÐµÐ¼Ñ‹Ñ…
 */
 SELECT * FROM dish
 ORDER BY 1
 
-— 3.6. Ðàáîòà ñ äàòàìè
+â€” 3.6. Ð Ð°Ð±Ð¾Ñ‚Ð° Ñ Ð´Ð°Ñ‚Ð°Ð¼Ð¸
 
 /*
-a.WHERE ïî äàòå
+a.WHERE Ð¿Ð¾ Ð´Ð°Ñ‚Ðµ
 */
 SELECT * FROM [promotion] WHERE start_time = 12/02/2022
 
 /*
-b.WHERE äàòà â äèàïàçîíå
+b.WHERE Ð´Ð°Ñ‚Ð° Ð² Ð´Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½Ðµ
 */
 SELECT * FROM [promotion]
 WHERE start_time >= 12/02/2022
 AND start_time <= 25/02/2022
 
 /*
-c.Èçâëå÷ü èç òàáëèöû íå âñþ äàòó, à òîëüêî ãîä. Íàïðèìåð, ãîä ðîæäåíèÿ àâòîðà.
-Äëÿ ýòîãî èñïîëüçóåòñÿ ôóíêöèÿ YEAR
+c.Ð˜Ð·Ð²Ð»ÐµÑ‡ÑŒ Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ Ð½Ðµ Ð²ÑÑŽ Ð´Ð°Ñ‚Ñƒ, Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð³Ð¾Ð´. ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Ð³Ð¾Ð´ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ Ð°Ð²Ñ‚Ð¾Ñ€Ð°.
+Ð”Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ YEAR
 */
 SELECT YEAR( start_time) AS [year] FROM [promotion]
 
-— 3.7.Ôóíêöèè àãðåãàöèè
+â€” 3.7.Ð¤ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð°Ð³Ñ€ÐµÐ³Ð°Ñ†Ð¸Ð¸
 /*
-a.Ïîñ÷èòàòü êîëè÷åñòâî çàïèñåé â òàáëèöå
+a.ÐŸÐ¾ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ
 */
 SELECT Count(*) FROM dish
 
 /*
-b.Ïîñ÷èòàòü êîëè÷åñòâî óíèêàëüíûõ çàïèñåé â òàáëèöå
+b.ÐŸÐ¾ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ñ… Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ
 */
 SELECT Count(dish_id) FROM dish
 
 /*
-c.Âûâåñòè óíèêàëüíûå çíà÷åíèÿ ñòîëáöà
+c.Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°
 */
 SELECT type_recipe from recipe
 GROUP BY type_recipe
 
 /*
-d.Íàéòè ìàêñèìàëüíîå çíà÷åíèå ñòîëáöà
+d.ÐÐ°Ð¹Ñ‚Ð¸ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°
 */
 SELECT MAX(price) FROM dish
 
 /*
-e.Íàéòè ìèíèìàëüíîå çíà÷åíèå ñòîëáöà
+e.ÐÐ°Ð¹Ñ‚Ð¸ Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°
 */
 SELECT MIN(price) FROM dish
 
 /*
-f.Íàïèñàòü çàïðîñ COUNT () + GROUP BY
+f.ÐÐ°Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð·Ð°Ð¿Ñ€Ð¾Ñ COUNT () + GROUP BY
 */
 SELECT type_recipe, COUNT(*) from recipe
 GROUP BY type_recipe
 
-— 3.8.SELECT GROUP BY + HAVING
+â€” 3.8.SELECT GROUP BY + HAVING
 
 
 
-— select * from dish where dish_id in (select dish_id from recipe_dish where recipe_id in (select recipe_id from recipe where type_recipe = 150))
+â€” select * from dish where dish_id in (select dish_id from recipe_dish where recipe_id in (select recipe_id from recipe where type_recipe = 150))
